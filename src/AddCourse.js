@@ -178,7 +178,7 @@ class AddCourse extends Component {
         }
         // console.log('val',value.toString())
         this.setState({
-            langValue : value
+            langvalue : value
         })
     }
 
@@ -229,11 +229,11 @@ class AddCourse extends Component {
     addCourse = (e) => {
         e.preventDefault()
 
-        let language = this.state.langValue.toString()
+        let language = this.state.langvalue.toString()
         this.setState(prevState => ({
             temp_obj: {                   // object that we want to update
                 ...prevState.temp_obj,    // keep all other key-value pairs
-                id : 11,
+                id : this.props.course_count + 1,
                 dataCategory : this.state.categoryValue,
                 dataLevel : this.state.levelValue,
                 dataPrice : this.state.priceValue,
@@ -261,7 +261,7 @@ class AddCourse extends Component {
 
         })
         // console.log(this.state.categoryValue,this.state.levelValue,this.state.priceValue,
-        //     this.state.amount,this.state.langValue,this.state.setUploaderName,this.state.setCourseDesc,
+        //     this.state.amount,this.state.langvalue,this.state.setUploaderName,this.state.setCourseDesc,
         //     this.state.setCourseName,this.state.setTotalLesson)
 
     }
@@ -332,7 +332,7 @@ class AddCourse extends Component {
 
                                     <Form.Group controlId="language">
                                         <Form.Label>Select Languages</Form.Label>
-                                        <Form.Control as="select" onChange={this.setLanguage} value={ this.state.langValue } multiple>
+                                        <Form.Control as="select" onChange={this.setLanguage} value={ this.state.langvalue } multiple>
                                             {
                                                 languages_option.map((item,key) => {
                                                     return (
@@ -385,10 +385,17 @@ class AddCourse extends Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        course_count : state.course.courses.length
+    }
+}
+  
+
 const mapDispatchToProps = (dispatch) => {
     return {
         newCourse : (new_course) => dispatch(addNewCourse(new_course))
     }
 }
 
-export default connect(null,mapDispatchToProps)(withRouter(AddCourse));
+export default connect(mapStateToProps,mapDispatchToProps)(withRouter(AddCourse));
