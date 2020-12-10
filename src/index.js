@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router,Switch,Route} from "react-router-dom";
 import { Provider } from 'react-redux';
 import store from './redux/store';
+import AddCourse from './AddCourse';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -14,7 +15,7 @@ ReactDOM.render(
           <Switch>  
               <Route exact path='/' component={App}/> 
           
-              {/* <Route path='/add-course' component={AddCourse}/> */}
+              <Route path='/add-course' component={AddCourse}/>
           </Switch>
         </Router>
      </Provider>    

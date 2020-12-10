@@ -1,1 +1,1 @@
-export { category } from './course/courseAction'
+export * from './course/courseAction'

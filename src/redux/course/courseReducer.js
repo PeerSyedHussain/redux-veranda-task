@@ -8,7 +8,7 @@ import Accountant from '../../assets/img/accountant.jpg'
 import GST from '../../assets/img/gst.jpg'
 import MarketTrend from '../../assets/img/market-trend.jpg'
 import Provider1 from '../../assets/img/provider1.jpg'
-import { CATEGORY } from '../course/courseType'
+import { CATEGORY, NEW_COURSE } from '../course/courseType'
 
 const initialState = {
     courses : [
@@ -199,15 +199,24 @@ const initialState = {
 const courseReducer = (state = initialState,action) => {
     console.log('action.payload',action.payload)
     switch (action.type) {
-        case CATEGORY: return{
-            ...state,
-            FinalCourseList : action.payload
-        }
-            
-        default: return {
-            ...state,
-            FinalCourseList : action.payload
-        }
+        case CATEGORY : 
+            return {
+                ...state,
+                FinalCourseList : action.payload
+            }
+
+        case NEW_COURSE : 
+            return {
+                // ...state,
+                courses : state.courses.concat(action.payload),
+                FinalCourseList : state.FinalCourseList.concat(action.payload)
+            }
+        
+        default: 
+            return {
+                ...state,
+                FinalCourseList : action.payload
+            }
     }
 }
 
