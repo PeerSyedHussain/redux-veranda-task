@@ -841,58 +841,9 @@ class App extends Component {
                   
                     
                     <ul className='p-0 d-flex flex-wrap'>
-                        {/* {
-                            FinalCourseList.map((item,key) => {
-                              return (
-                                  <>
-                                      <li id={key} data-id={item.id} data-category={item.dataCategory} 
-                                          data-sort={item.dataSort} data-level = {item.dataLevel} data-price = {item.dataPrice}
-                                          data-language = {item.dataLanguage}
-                                          className={item.className}>
-                                          <div className={item.firstChildClass}>
-                                              <img src={item.img_url} alt="pic" className='shadow-sm w-100'/>
-                                              <div className='price-bg'>
-                                                  <p className='mb-0'>{(item.dataPrice === 'Free') ?  'Free' : `Rs ${item.dataCourseAmt}`  }</p>
-                                              </div>
-                                          </div>
-                                          <div className='course-tot-info'>
-                                              <div className='provider-info'>
-                                                  <div className='provider-img'>
-                                                    <img src={item.courseProviderImg} alt="pic" className='shadow-sm w-100'/>
-                                                  </div>
-                                                  <div className='ml-3'>
-                                                      <p className='mb-0'>{item.courseProviderName}</p>
-
-                                                      <div>
-                                                        <p className='mb-0 d-flex flex-wrap'>
-                                                          {item.courseTotalLesson} Lessons 
-                                                            <span className='separator mx-2'></span>
-                                                          {item.courseAvailableLang}
-                                                        </p>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                              <h3 className='course-name'>{item.courseName}</h3>
-                                              <p className='course-desc mb-0'>
-                                                {item.courseDesc}
-                                              </p>
-                                              <div className='btn-sec my-3'>
-                                                <Button variant="success">
-                                                    Purchase Now
-                                                </Button>
-                                                <Button variant="outline-success">
-                                                    Get Information
-                                                </Button>
-                                              </div>
-                                          </div>
-                                          
-                                      </li>
-                                  </>
-                              );
-                            })
-                        } */}
                         {
-                            this.props.course_list.FinalCourseList.map((item,key) => {
+                          this.props.hasOwnProperty("course_list") ? 
+                            this.props.course_list.FinalCourseList.length > 0  ? this.props.course_list.FinalCourseList.map((item,key) => {
                               return (
                                   <>
                                       <li id={key} data-id={item.id} data-category={item.dataCategory} 
@@ -939,7 +890,8 @@ class App extends Component {
                                       </li>
                                   </>
                               );
-                            })
+                            }) : ''
+                            : ''
                         }
                       </ul>
                   </div>

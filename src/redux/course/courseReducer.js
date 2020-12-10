@@ -197,7 +197,7 @@ const initialState = {
 }
 
 const courseReducer = (state = initialState,action) => {
-    console.log('action.payload',action.payload)
+    console.log('action.payload',action.payload,'action.type',action.type)
     switch (action.type) {
         case CATEGORY : 
             return {
